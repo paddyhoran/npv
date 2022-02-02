@@ -5,10 +5,27 @@ SUM_ASSURED = 25000.0
 INTEREST_RATE = 0.02
 
 
+class Lives:
+    """
+    Custom type to represent lives.
+    """
+    def __init__(self, value):
+        if value < 0:
+            raise ValueError("Lives cannot be negative.")
+        self.value = value
+
+    def __sub__(self, other):
+        lives = self.value - other
+        return Lives(lives)
+
+    def __mul__(self, other):
+        return self.value * other
+
+
 def main():
 
     npv = PREMIUM
-    lx = 1.0
+    lx = Lives(1.0)
     discount_rate = 1.0 / (1.0 + INTEREST_RATE)
 
     for t in range(1, 11):
