@@ -1,4 +1,7 @@
 use npv::npv;
+// discounted_net_cash_flow = net_cash_flow * (discount_rate ** t)
+// # discounted_net_cash_flow = net_cash_flow  ** discount_rate
+// # discounted_net_cash_flow = math.pow(net_cash_flow, discount_rate)
 
 fn main() {
     // stable-x86_64-pc-windows-msvc
@@ -9,7 +12,7 @@ fn main() {
     let premium: f64 = 100.0;
     let sum_assured: f64 = 25000.0;
     let interest_rate: f64 = 0.02;
-    loop {
+    // loop {
         npv(&mortality_rates, &lapse_rates, interest_rate, sum_assured, premium, 1.0, None);
-    }
+    // }
 }

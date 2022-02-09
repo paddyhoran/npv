@@ -1,5 +1,4 @@
-
-
+mod rates;
 
 pub fn npv(mortality_rates: &[f64], lapse_rates: &[f64], interest_rate: f64, sum_assured: f64, premium: f64, init_pols: f64, term: Option<usize>) -> f64 {
 
