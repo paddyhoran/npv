@@ -2,7 +2,6 @@ MORTALITY_RATES = {1: 0.001, 2: 0.002, 3: 0.003, 4: 0.003, 5: 0.004, 6: 0.004, 7
 LAPSE_RATES = {1:0.05, 2: 0.07, 3: 0.08, 4: 0.10, 5: 0.14, 6: 0.20, 7: 0.20, 8: 0.20, 9: 0.10, 10: 0.04}
 PREMIUM = 100.0
 SUM_ASSURED = 25000.0
-INTEREST_RATE = 0.02
 
 
 class Lives:
@@ -22,11 +21,11 @@ class Lives:
         return self.value * other
 
 
-def main():
+def main(interest_rate):
 
     npv = PREMIUM
     lx = Lives(1.0)
-    discount_rate = 1.0 / (1.0 + INTEREST_RATE)
+    discount_rate = 1.0 / (1.0 + interest_rate)
 
     for t in range(1, 11):
         deaths = lx * MORTALITY_RATES[t]
@@ -39,6 +38,3 @@ def main():
         npv += discounted_net_cash_flow
 
     return npv
-
-
-print(main())
